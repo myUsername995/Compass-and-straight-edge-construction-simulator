@@ -456,19 +456,6 @@ SDL_Texture* renderTexture(SDL_Renderer* renderer, TTF_Font* font, char* str, SD
     return texture;
 }
 
-// Chatgpt thank you for deriving this equation for me
-// Convert screen cordinates to world cordinates
-// SDL_FPoint screen_to_world(SDL_FPoint point, float zoom, SDL_FPoint top_left){
-//     return (SDL_FPoint){(point.x - WINDOW_WIDTH / 2) * zoom - top_left.x + WINDOW_WIDTH / 2, 
-//                         (point.y - WINDOW_HEIGHT / 2) * zoom - top_left.y + WINDOW_HEIGHT / 2};
-// }
-
-// // Convert world cordinates to screen cordinates
-// SDL_FPoint world_to_screen(SDL_FPoint point, float zoom, SDL_FPoint top_left){
-//     return (SDL_FPoint){WINDOW_WIDTH / 2 + (point.x + top_left.x - WINDOW_WIDTH / 2) / zoom, 
-//                         WINDOW_HEIGHT / 2 + (point.y + top_left.y - WINDOW_HEIGHT / 2) / zoom};
-// }
-
 SDL_FPoint world_to_screen(SDL_FPoint p, double zoom, SDL_FPoint top_left){
     return (SDL_FPoint){(p.x - top_left.x) / zoom, (p.y - top_left.y) / zoom};
 }
@@ -1098,7 +1085,6 @@ void drawCircle(SDL_Renderer* renderer, SDL_FPoint point, int radius){
 }
 
 void resize(void** arr, int size, int elements_size){
-    printf("Massive resizing operation!\n");
     void* new_arr = realloc(*arr, size * elements_size);
 
     if (!new_arr){
@@ -2023,8 +2009,6 @@ int SDL_main(int argc, char* argv[]){
     SDL_FRect deleteRect;
 
     while (run){
-        //printf("%d\n", fill_track);
-        //printf("Point, noInt, Line, and circle track: %d, %d, %d, %d\n", points_track, noInt_track, line_track, circle_track);
 
         SDL_SetRenderDrawColor(renderer, 160, 160, 160, 255);
         SDL_RenderClear(renderer);
@@ -2102,12 +2086,12 @@ int SDL_main(int argc, char* argv[]){
                             deleteClicked = true;
                         }
 
-                        // Increment the clicks amount so that I can use it when closing the tab that comes up
-                        // when you press load, save or delete
                         if (saveAsClicked){
                             break;
                         }
 
+						// Increment the clicks amount so that I can use it when closing the tab that comes up
+                        // when you press load, save or delete
                         if (loadClicked || saveClicked || deleteClicked){
                             clicks_amount %= 2;
                             clicks_amount++;
@@ -3443,4 +3427,5 @@ int SDL_main(int argc, char* argv[]){
     free(texts2);
 
     return 0;
+
 }

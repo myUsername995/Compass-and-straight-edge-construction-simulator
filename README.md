@@ -4,7 +4,7 @@ A silly program to fulfill all your construction with straight edge and compass 
 # Main controls:  
 Left click to start drawing a line and left click again to end it  
 Right click to just place a single point  
-Shift and left click to remove lines  
+Shift and left click to remove lines and arcs  
 Shift and right click to remove points  
   
 # Controls:  
@@ -14,7 +14,7 @@ T and drag with left click to move around
 Scroll to zoom in / out  
 H to make lines appear more transparent  
 K then left click to fill regions with some color  
-Change the what color you use by pressing D  
+Change the color you use by pressing D  
   
 # Using the compass:  
 Click somewhere  
